@@ -3,7 +3,7 @@ let books = require("./booksdb.js");
 let isValid = require("./auth_users.js").isValid;
 let users = require("./auth_users.js").users;
 const public_users = express.Router();
-
+const axios = require('axios');
 
 public_users.post("/register", (req,res) => {
   //Write your code here
@@ -29,6 +29,17 @@ public_users.get('/',function (req, res) {
 //   return res.status(300).json({message: "Yet to be implemented"});
     return res.send(JSON.stringify(books, null, 4));
 });
+
+// public_users.get('/books', async function (req, res) {
+//     try {
+//         // Simulating async operation
+//         await new Promise(resolve => setTimeout(resolve, 100)); // Fake delay
+//         return res.status(200).json(books);
+//     } catch (error) {
+//         return res.status(500).json({ message: "Error fetching books", error: error.message });
+//     }
+// });
+
 
 // Get book details based on ISBN
 public_users.get('/isbn/:isbn',function (req, res) {
